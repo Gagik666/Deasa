@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
   txtTitle: {
     color: COLOR.white,
-    fontSize: 32,
+    fontSize: 28,
   },
   btnAdd: {
     marginStart: 20,

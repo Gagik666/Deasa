@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
+import {View, Text, SafeAreaView, FlatList, StatusBar} from 'react-native';
 import React from 'react';
 import {styles} from './Style';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,6 +12,7 @@ import {
   resetTempPoint,
 } from '../../../redux/reducers/raeducer';
 import {PointTeam} from '../../components/pointTeam/PointTeam';
+import {Strings} from '../../../assets/strings/Strings';
 
 export const Points = ({navigation}) => {
   const dispatch = useDispatch();
@@ -33,12 +34,17 @@ export const Points = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#FF4359"
+        translucent
+      />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
         <View style={styles.viewTop}>
           <View style={styles.viewPoint}>
-            <Text style={styles.txtPoint}>Points</Text>
+            <Text style={styles.txtPoint}>{Strings.points}</Text>
             <View style={styles.viewFlag}>
               <FlagSVGIcone />
               <Text style={styles.txtPoint}>{fixPoint}</Text>
@@ -56,7 +62,9 @@ export const Points = ({navigation}) => {
         </View>
         <View style={styles.viewBottom}>
           <Text style={styles.txtName}>{teams[queueOfTeams].teamName}</Text>
-          <Text style={[styles.txtName, {marginBottom: 32}]}>{teams[queueOfTeams].players[queueOfPlayers].name}</Text>
+          <Text style={[styles.txtName, {marginBottom: 32}]}>
+            {teams[queueOfTeams].players[queueOfPlayers].name}
+          </Text>
           <BtnPlay click={playAgainClick} />
         </View>
       </LinearGradient>

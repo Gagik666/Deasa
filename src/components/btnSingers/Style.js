@@ -2,30 +2,30 @@ import {StyleSheet, Dimensions} from 'react-native';
 import {COLOR} from '../../../assets/colors/Colors';
 export const styles = StyleSheet.create({
   btnActiveItem: {
-    marginVertical: 10,
+    marginVertical: Dimensions.get('window').width * 0.02,
     borderColor: COLOR.yellow,
     borderWidth: 1,
     width: Dimensions.get('window').width * 0.8,
-    paddingVertical: 10,
+    paddingVertical:Dimensions.get('window').width * 0.04,
     borderRadius: 50,
   },
   txtActiveItem: {
     color: COLOR.white,
-    fontSize: 24,
+    fontSize: 18,
     textAlign: 'center',
   },
 
   btnInActiveItem: {
-    marginVertical: 10,
+    marginVertical: Dimensions.get('window').width * 0.02,
     borderColor: 'gray',
     borderWidth: 1,
     width: Dimensions.get('window').width * 0.8,
-    paddingVertical: 10,
+    paddingVertical:Dimensions.get('window').width * 0.04,
     borderRadius: 50,
   },
   txtInActiveItem: {
     color: 'gray',
-    fontSize: 24,
+    fontSize: 18,
     textAlign: 'center',
   },
 });

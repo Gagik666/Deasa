@@ -4,12 +4,14 @@ import {COLOR} from '../../../assets/colors/Colors';
 export const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    
   },
   LinearGradient: {
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: 'space-between',
-    paddingBottom: 20,
+    paddingBottom: 30,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
   },
   viewTop: {
     flexDirection: 'row',
@@ -24,8 +26,9 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   viewList: {
-    height: Dimensions.get('window').height * 0.6,
+    height: Dimensions.get('window').height * 0.7,
     alignItems: 'center',
+    marginTop: 50
   },
   txtPoints: {
     color: COLOR.white,

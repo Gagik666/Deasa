@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Dimensions,
+  StatusBar,
 } from 'react-native';
 import React from 'react';
 import {styles} from './Style';
@@ -14,6 +15,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {editFixPoint, editTime} from '../../../redux/reducers/raeducer';
 import {CusteSlider} from '../../components/slider/CustemSlider';
 import {PointsSVGIcone} from '../../../assets/icones/PointsSVGIcone';
+import {Strings} from '../../../assets/strings/Strings';
 
 export const Settings = ({navigation}) => {
   const time = useSelector(s => s.deAsa.time);
@@ -27,6 +29,11 @@ export const Settings = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#FF4359"
+        translucent
+      />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
@@ -37,14 +44,14 @@ export const Settings = ({navigation}) => {
             }}>
             <ArrowBackSVGIcone />
           </TouchableOpacity>
-          <Text style={styles.txtSettings}>Settings</Text>
+          <Text style={styles.txtSettings}>{Strings.settings}</Text>
         </View>
         <View style={styles.viewTime}>
           <WatchSVGIcone />
           <CusteSlider
             val={time}
-            title="Round time"
-            subtitle="In seconds"
+            title={Strings.roundTime}
+            subtitle={Strings.inSeconds}
             setVal={setTime}
           />
         </View>
@@ -52,8 +59,8 @@ export const Settings = ({navigation}) => {
           <PointsSVGIcone />
           <CusteSlider
             val={fixPoint}
-            title="Victory points"
-            subtitle="Number of words to guess to win"
+            title={Strings.victoryPoints}
+            subtitle={Strings.numberOfWords}
             setVal={setFixPoint}
           />
         </View>

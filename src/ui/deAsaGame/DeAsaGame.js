@@ -1,4 +1,4 @@
-import {Text, SafeAreaView, View, FlatList} from 'react-native';
+import {Text, SafeAreaView, View, FlatList, StatusBar} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,6 +13,7 @@ import {
   resetQueueOfPlayers,
   resetQueueOfTeams,
 } from '../../../redux/reducers/raeducer';
+import {Strings} from '../../../assets/strings/Strings';
 
 export const DeAsaGame = ({navigation}) => {
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ export const DeAsaGame = ({navigation}) => {
     }
 
     if (tempIndex === 6) {
-      dispatch(editIndex(index + 7));
+      dispatch(editIndex(index + 6));
       dispatch(editTempIndex());
     }
   });
@@ -86,6 +87,11 @@ export const DeAsaGame = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#FF4359"
+        translucent
+      />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
@@ -101,7 +107,7 @@ export const DeAsaGame = ({navigation}) => {
             renderItem={({item}) => <BtnSingers name={item.name} />}
           />
         </View>
-        <Text style={styles.txtPoints}>{`Points ${tempPoint}`}</Text>
+        <Text style={styles.txtPoints}>{`${Strings.point} ${tempPoint}`}</Text>
       </LinearGradient>
     </SafeAreaView>
   );

@@ -4,10 +4,12 @@ import {COLOR} from '../../../assets/colors/Colors';
 export const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    
   },
   LinearGradient: {
     flex: 1,
     padding: 20,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
   },
   viewTop: {
     flexDirection: 'row',

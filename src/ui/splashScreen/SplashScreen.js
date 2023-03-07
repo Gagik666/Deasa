@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, StatusBar} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './Style';
@@ -6,7 +6,7 @@ import {onValue, ref} from 'firebase/database';
 import {db} from '../../../db/firebase/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
-
+import { Strings } from '../../../assets/strings/Strings';
 export const SplashScreen = ({navigation}) => {
   const [isConnected, setIsConnected] = useState(true);
   useEffect(() => {
@@ -60,11 +60,16 @@ export const SplashScreen = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar 
+        barStyle='light-content'
+        backgroundColor='#FF4359'
+        translucent
+      />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
         <View>
-          <Text style={styles.txtTitle}>Deasa</Text>
+          <Text style={styles.txtTitle}>{Strings.projectName}</Text>
         </View>
       </LinearGradient>
     </SafeAreaView>

@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  StatusBar,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -27,6 +28,7 @@ import {
 } from '../../../redux/reducers/raeducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
+import {Strings} from '../../../assets/strings/Strings';
 
 export const SelectTeams = ({navigation}) => {
   const teams = useSelector(s => s.deAsa.teams);
@@ -92,6 +94,10 @@ export const SelectTeams = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#FF4359"
+      />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
@@ -101,14 +107,15 @@ export const SelectTeams = ({navigation}) => {
           animationOutTiming={1000}
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
           <View style={styles.viewModal}>
-            <Text style={styles.txtModalTitle}>team name</Text>
+            <Text style={styles.txtModalTitle}>{Strings.teamName}</Text>
             <TextInput
               style={styles.txtInputModal}
               onChangeText={text => setName(text)}
+              maxLength={13}
             />
             <View style={styles.viewModalButton}>
               <TouchableOpacity onPress={() => setIsVisible(false)}>
-                <Text style={styles.txtBtnMoadal}>Cancel</Text>
+                <Text style={styles.txtBtnMoadal}>{Strings.cancle}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
@@ -119,12 +126,12 @@ export const SelectTeams = ({navigation}) => {
                     editPlayerNameClick();
                   }
                 }}>
-                <Text style={styles.txtBtnMoadal}>OK</Text>
+                <Text style={styles.txtBtnMoadal}>{Strings.ok}</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-        <Text style={styles.txtTitle}>Tams</Text>
+        <Text style={styles.txtTitle}>{Strings.teams}</Text>
         <View style={styles.viewTop}>
           <View>
             <FlatList
@@ -143,7 +150,7 @@ export const SelectTeams = ({navigation}) => {
           </View>
           {teamsCount <= 2 && (
             <TouchableOpacity onPress={addTeamClock}>
-              <Text style={styles.txtAdd}>Add team</Text>
+              <Text style={styles.txtAdd}>{Strings.addTeam}</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -152,7 +159,9 @@ export const SelectTeams = ({navigation}) => {
             <BtnCircle flag="-" click={reduceTimeClick} />
             <View style={styles.viewTxt}>
               <Text
-                style={styles.txtSettings}>{`round time\n${time} sec`}</Text>
+                style={
+                  styles.txtSettings
+                }>{`${Strings.roundTime}\n${time} ${Strings.sec}`}</Text>
             </View>
             <BtnCircle flag="+" click={addTimeClick} />
           </View>
@@ -162,7 +171,7 @@ export const SelectTeams = ({navigation}) => {
               <Text
                 style={
                   styles.txtSettings
-                }>{`victory points\n${fixPoint}`}</Text>
+                }>{`${Strings.victoryPoints}\n${fixPoint}`}</Text>
             </View>
             <BtnCircle flag="+" click={addFixPointClick} />
           </View>

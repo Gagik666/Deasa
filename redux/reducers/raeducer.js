@@ -1,32 +1,34 @@
+import { Strings } from "../../assets/strings/Strings";
+
 const initialState = {
   teams: [
     {
-      teamName: 'team 1',
+      teamName: `${Strings.team} 1`,
       TeamPoint: 0,
       playerCount: 2,
       players: [
         {
-          name: 'player 1',
+          name: `${Strings.player} 1`,
           id: 1,
         },
         {
-          name: 'player 2',
+          name: `${Strings.player} 2`,
           id: 2,
         },
       ],
       id: 1,
     },
     {
-      teamName: 'team 2',
+      teamName: `${Strings.team} 2`,
       TeamPoint: 0,
       playerCount: 2,
       players: [
         {
-          name: 'player 1',
+          name: `${Strings.player} 1`,
           id: 1,
         },
         {
-          name: 'player 2',
+          name: `${Strings.player} 2`,
           id: 2,
         },
       ],
@@ -65,14 +67,14 @@ export const reducer = (state = initialState, action) => {
         teams: [
           ...state.teams,
           {
-            teamName: 'team 3',
+            teamName: `${Strings.team} 3`,
             players: [
               {
-                name: 'player 1',
+                name: `${Strings.player} 1`,
                 id: 1,
               },
               {
-                name: 'player 2',
+                name: `${Strings.player} 2`,
                 id: 2,
               },
             ],

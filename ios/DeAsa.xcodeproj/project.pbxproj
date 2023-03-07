@@ -15,6 +15,9 @@
 		7699B88040F8A987B510C191 /* libPods-DeAsa-DeAsaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DeAsa-DeAsaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C80068A091594E528D854C58 /* HennyPenny-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0014FE892D194CDC88536B1B /* HennyPenny-Regular.ttf */; };
+		4A01FF883D414A638CCEDF9A /* Asset-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A86E9A958C14863B8A7166B /* Asset-Regular.ttf */; };
+		379FA3B3BCFE449499B7EE84 /* Nabla-Regular-VariableFont_EDPT,EHLT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AC3A09E7844F42811AF509 /* Nabla-Regular-VariableFont_EDPT,EHLT.ttf */; };
+		CF80117C7CF94EB3961B1503 /* RubikIso-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCD36D5F924E9BA7E21DFD /* RubikIso-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-DeAsa-DeAsaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeAsa-DeAsaTests.release.xcconfig"; path = "Target Support Files/Pods-DeAsa-DeAsaTests/Pods-DeAsa-DeAsaTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		0014FE892D194CDC88536B1B /* HennyPenny-Regular.ttf */ = {isa = PBXFileReference; name = "HennyPenny-Regular.ttf"; path = "../assets/fonts/HennyPenny-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0A86E9A958C14863B8A7166B /* Asset-Regular.ttf */ = {isa = PBXFileReference; name = "Asset-Regular.ttf"; path = "../assets/fonts/Asset-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		24AC3A09E7844F42811AF509 /* Nabla-Regular-VariableFont_EDPT,EHLT.ttf */ = {isa = PBXFileReference; name = "Nabla-Regular-VariableFont_EDPT,EHLT.ttf"; path = "../assets/fonts/Nabla-Regular-VariableFont_EDPT,EHLT.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1FCCD36D5F924E9BA7E21DFD /* RubikIso-Regular.ttf */ = {isa = PBXFileReference; name = "RubikIso-Regular.ttf"; path = "../assets/fonts/RubikIso-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,9 @@
 			isa = "PBXGroup";
 			children = (
 				0014FE892D194CDC88536B1B /* HennyPenny-Regular.ttf */,
+				0A86E9A958C14863B8A7166B /* Asset-Regular.ttf */,
+				24AC3A09E7844F42811AF509 /* Nabla-Regular-VariableFont_EDPT,EHLT.ttf */,
+				1FCCD36D5F924E9BA7E21DFD /* RubikIso-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -257,6 +266,9 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C80068A091594E528D854C58 /* HennyPenny-Regular.ttf in Resources */,
+				4A01FF883D414A638CCEDF9A /* Asset-Regular.ttf in Resources */,
+				379FA3B3BCFE449499B7EE84 /* Nabla-Regular-VariableFont_EDPT,EHLT.ttf in Resources */,
+				CF80117C7CF94EB3961B1503 /* RubikIso-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

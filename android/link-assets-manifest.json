@@ -2,8 +2,20 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Asset-Regular.ttf",
+      "sha1": "d531e7be5128e3ca438b761514386067e3228a52"
+    },
+    {
       "path": "assets/fonts/HennyPenny-Regular.ttf",
       "sha1": "7c372c76f50c940731c06c7c7a299c438bd90a47"
+    },
+    {
+      "path": "assets/fonts/Nabla-Regular-VariableFont_EDPT,EHLT.ttf",
+      "sha1": "58930a217baa5bbd5777004832507bab8e275607"
+    },
+    {
+      "path": "assets/fonts/RubikIso-Regular.ttf",
+      "sha1": "1b3c3df203ecb5c601819850dfd4372d5c56e8d5"
     }
   ]
 }
