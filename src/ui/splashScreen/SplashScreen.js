@@ -7,9 +7,17 @@ import {db} from '../../../db/firebase/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
 import { Strings } from '../../../assets/strings/Strings';
+import { useDispatch } from 'react-redux';
+import { editAppUrl, editAuthorEmail } from '../../../redux/reducers/raeducer';
 export const SplashScreen = ({navigation}) => {
+
+  const dispatch = useDispatch() 
   const [isConnected, setIsConnected] = useState(true);
   useEffect(() => {
+
+    getAppUrl()
+    getAuthorEmail()
+
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
 
@@ -20,6 +28,18 @@ export const SplashScreen = ({navigation}) => {
       unsubscribe();
     };
   }, []);
+
+  const getAppUrl = () => {
+    onValue(ref(db, '/app_url/'), r => {
+       dispatch(editAppUrl(r.val()))
+    });
+  }
+
+  const getAuthorEmail = () => {
+    onValue(ref(db, '/author_email/'), r => {
+       dispatch(editAuthorEmail(r.val()))
+    });
+  }
 
   const checkVersion = async () => {
     try {

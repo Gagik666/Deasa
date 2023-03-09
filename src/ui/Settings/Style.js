@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   LinearGradient: {
     flex: 1,
     padding: 20,
-    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    paddingTop: Platform.OS === 'android' ? 50 : 0,
   },
   viewTop: {
     flexDirection: 'row',
@@ -40,12 +40,15 @@ export const styles = StyleSheet.create({
   },
   txtTimeTitle: {
     color: COLOR.white,
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   txtTimeSubTitle: {
     color: COLOR.whiteGray,
-    fontSize: 18,
-    fontWeight: '300'
+    fontSize: 14,
+    fontWeight: '300',
+    paddingVertical: 10,
+    paddingStart: 16,
+    width: '60%'
   }
 });

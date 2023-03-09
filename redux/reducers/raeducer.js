@@ -1,4 +1,4 @@
-import { Strings } from "../../assets/strings/Strings";
+import {Strings} from '../../assets/strings/Strings';
 
 const initialState = {
   teams: [
@@ -47,6 +47,8 @@ const initialState = {
   tempIndex: 0,
   index: 0,
   timer: 0,
+  appUrl: '',
+  authorEmail: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -266,6 +268,16 @@ export const reducer = (state = initialState, action) => {
         ...state,
         timer: (state.timer += 1),
       };
+    case 'editAppUrl':
+      return {
+        ...state,
+        appUrl: action.url,
+      };
+    case 'editAuthorEmail':
+      return {
+        ...state,
+        authorEmail: action.email
+      };
     default:
       return state;
   }
@@ -420,5 +432,17 @@ export const resetPoint = id => {
 export const editTimer = () => {
   return dispatch => {
     return dispatch({type: 'editTimer'});
+  };
+};
+
+export const editAppUrl = url => {
+  return dispatch => {
+    return dispatch({type: 'editAppUrl', url});
+  };
+};
+
+export const editAuthorEmail = email => {
+  return dispatch => {
+    return dispatch({type: 'editAuthorEmail', email});
   };
 };

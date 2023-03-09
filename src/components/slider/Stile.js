@@ -9,14 +9,15 @@ export const styles = StyleSheet.create({
   },
   txtTimeTitle: {
     color: COLOR.white,
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   txtTimeSubTitle: {
     color: COLOR.whiteGray,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '300',
     paddingVertical: 10,
-    paddingStart: 16
+    paddingStart: 16,
+    width: '60%'
   }
 });

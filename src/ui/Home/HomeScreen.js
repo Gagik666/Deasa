@@ -20,9 +20,11 @@ import {
   resetTempPoint,
 } from '../../../redux/reducers/raeducer';
 import {Strings} from '../../../assets/strings/Strings';
-
+import {ShereSVGIcone} from '../../../assets/icones/ShereSVGIcone';
+import Share from 'react-native-share';
 const HomeScreen = ({navigation}) => {
   const teams = useSelector(s => s.deAsa.teams);
+  const appUrl = useSelector(s => s.deAsa.appUrl);
   const dispatch = useDispatch();
   const play = () => {
     dispatch(resetQueueOfPlayers());
@@ -34,6 +36,21 @@ const HomeScreen = ({navigation}) => {
       dispatch(resetPoint(index + 1));
     });
     navigation.navigate('SelectTeams');
+  };
+
+  const share = () => {
+    const options = {
+      message: Strings.shareMessage,
+      url: appUrl,
+    };
+
+    Share.open(options)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        err && console.log(err);
+      });
   };
 
   return (
@@ -48,6 +65,12 @@ const HomeScreen = ({navigation}) => {
         style={styles.LinearGradient}>
         <View>
           <View style={styles.viewTop}>
+            <TouchableOpacity
+              onPress={() => {
+                share()
+              }}>
+              <ShereSVGIcone />
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Settings');

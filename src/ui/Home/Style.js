@@ -10,11 +10,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'space-between',
-    paddingTop: Platform.OS === 'android' ? 40 : 0,
+    paddingTop: Platform.OS === 'android' ? 50 : 0,
   },
   viewTop: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    columnGap: 16
   },
   txtTitle: {
     textAlign: 'center',

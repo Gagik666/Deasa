@@ -16,13 +16,11 @@ import {BtnCircle} from '../../components/btnCircle/BtnCircle';
 import {BtnPlay} from '../../components/btnPlay/btnPlay';
 import {
   addFixPoint,
-  addPoint,
   addTeam,
   addTime,
   editPlayerName,
   editSingers,
   editTeamName,
-  editTimer,
   reduceFixPoint,
   reduceTime,
 } from '../../../redux/reducers/raeducer';

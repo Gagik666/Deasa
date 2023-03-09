@@ -5,8 +5,8 @@ export const SettingsSVGIcone = (props) => {
   return (
     <Svg
       fill="#fff"
-      height={28}
-      width={28}
+      height={20}
+      width={20}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 489.802 489.802"
       xmlSpace="preserve"
