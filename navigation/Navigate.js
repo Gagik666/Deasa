@@ -10,6 +10,8 @@ import { SplashScreen } from '../src/ui/splashScreen/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
+// This function is used to move screens within a project
+
 export const Navigita = () => {
     return (
         <NavigationContainer>

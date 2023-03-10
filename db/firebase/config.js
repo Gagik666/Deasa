@@ -1,3 +1,5 @@
+// This is where firebase settings and data are called from within the project
+
 import "firebase/auth";
 import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";

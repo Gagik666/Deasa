@@ -16,6 +16,8 @@ export const Player = ({
   setClickStatus
 }) => {
   const dispath = useDispatch();
+
+  //  This function is designed to remove a player
   const deletePlasyerClick = () => {
     dispath(deletePlayer(playerId, teamId));
   };

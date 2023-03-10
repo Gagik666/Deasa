@@ -20,13 +20,9 @@ export const Team = ({team, open, setidItem, setidItemPlayer, setClickStatus}) =
     dispatch(addPlayer(team.id));
   };
 
+  // This function is designed to remove a team
   const deleteTeamClick = () => {
     dispatch(deleteTeam(team.id));
-  };
-
-  const editTeamNameClick = () => {
-    dispatch(editTeamName(team.id, teamName));
-    setIsVisible(false);
   };
 
   return (

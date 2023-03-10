@@ -1,3 +1,5 @@
+// All the words or sentences in the project are here, which are called from within the project
+
 export const Strings = {
   projectName: 'Deasa',
   play: 'Играть',
@@ -16,7 +18,7 @@ export const Strings = {
   points: 'Счет',
   winner: 'Победитель!',
   newGame: 'Новая игра',
-  teamName: 'Имия игрока',
+  teamName: 'Имя игрока',
   ok: 'ОК',
   cancle: 'Отмена',
   sec: 'сек',

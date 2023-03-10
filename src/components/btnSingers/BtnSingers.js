@@ -9,11 +9,13 @@ export const BtnSingers = ({name}) => {
   const queueOfTeams = useSelector(s => s.deAsa.queueOfTeams);
   const dispatch = useDispatch();
 
+  // This function is designed to give 1 point
   const addPointClick = () => {
     setClick(false)
     dispatch(addTempPoint());
   };
 
+  //  This function is designed to take 1 point
   const reducePointClick = () => {
     setClick(true)
     dispatch(reduceTempPoint());
