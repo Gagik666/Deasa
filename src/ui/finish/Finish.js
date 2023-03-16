@@ -6,7 +6,7 @@ import {BtnPlay} from '../../components/btnPlay/btnPlay';
 import {useSelector} from 'react-redux';
 import {PointTeam} from '../../components/pointTeam/PointTeam';
 import {useRoute} from '@react-navigation/native';
-import {Strings} from '../../../assets/strings/Strings';
+import { strings } from '../../../localization';
 
 export const Finish = ({navigation}) => {
   const teams = useSelector(s => s.deAsa.teams);
@@ -23,7 +23,7 @@ export const Finish = ({navigation}) => {
         style={styles.LinearGradient}>
         <View style={styles.viewTop}>
           <Text style={styles.txtTitle}>{rout.params.team}</Text>
-          <Text style={styles.txtTitle}>{Strings.winner}</Text>
+          <Text style={styles.txtTitle}>{strings.winner}</Text>
         </View>
         <View style={styles.viewBottom}>
           <View style={styles.viewFlatList}>
@@ -37,7 +37,7 @@ export const Finish = ({navigation}) => {
           </View>
           <View>
             <BtnPlay
-              title={Strings.newGame}
+              title={strings.newGame}
               click={() => {
                 navigation.navigate('Home');
               }}

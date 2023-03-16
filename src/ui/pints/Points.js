@@ -12,7 +12,7 @@ import {
   resetTempPoint,
 } from '../../../redux/reducers/raeducer';
 import {PointTeam} from '../../components/pointTeam/PointTeam';
-import {Strings} from '../../../assets/strings/Strings';
+import { strings } from '../../../localization';
 
 export const Points = ({navigation}) => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ export const Points = ({navigation}) => {
         style={styles.LinearGradient}>
         <View style={styles.viewTop}>
           <View style={styles.viewPoint}>
-            <Text style={styles.txtPoint}>{Strings.points}</Text>
+            <Text style={styles.txtPoint}>{strings.points}</Text>
             <View style={styles.viewFlag}>
               <FlagSVGIcone />
               <Text style={styles.txtPoint}>{fixPoint}</Text>
@@ -65,7 +65,7 @@ export const Points = ({navigation}) => {
           <Text style={[styles.txtName, {marginBottom: 32}]}>
             {teams[queueOfTeams].players[queueOfPlayers].name}
           </Text>
-          <BtnPlay click={playAgainClick} />
+          <BtnPlay click={playAgainClick} title = {strings.play}/>
         </View>
       </LinearGradient>
     </SafeAreaView>

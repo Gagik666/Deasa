@@ -26,7 +26,7 @@ import {
 } from '../../../redux/reducers/raeducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
-import {Strings} from '../../../assets/strings/Strings';
+import {strings} from '../../../localization';
 
 export const SelectTeams = ({navigation}) => {
   const teams = useSelector(s => s.deAsa.teams);
@@ -92,10 +92,7 @@ export const SelectTeams = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="#FF4359"
-      />
+      <StatusBar barStyle="light-content" backgroundColor="#FF4359" />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
@@ -105,7 +102,12 @@ export const SelectTeams = ({navigation}) => {
           animationOutTiming={1000}
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
           <View style={styles.viewModal}>
-            <Text style={styles.txtModalTitle}>{Strings.teamName}</Text>
+            {clickStatus === 'team' ? (
+              <Text style={styles.txtModalTitle}>{strings.teamName}</Text>
+            ) : (
+              <Text style={styles.txtModalTitle}>{strings.playerName}</Text>
+            )}
+
             <TextInput
               style={styles.txtInputModal}
               onChangeText={text => setName(text)}
@@ -113,25 +115,32 @@ export const SelectTeams = ({navigation}) => {
             />
             <View style={styles.viewModalButton}>
               <TouchableOpacity onPress={() => setIsVisible(false)}>
-                <Text style={styles.txtBtnMoadal}>{Strings.cancle}</Text>
+                <Text style={styles.txtBtnMoadal}>{strings.cancle}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  if (clickStatus === 'team') {
-                    editName();
-                  }
-                  if (clickStatus === 'player') {
-                    editPlayerNameClick();
+                  if (name === '') {
+                    setIsVisible(false);
+                    
+                  } else {
+                    if (clickStatus === 'team') {
+                      editName();
+                      setName('')
+                    }
+                    if (clickStatus === 'player') {
+                      editPlayerNameClick();
+                      setName('')
+                    }
                   }
                 }}>
-                <Text style={styles.txtBtnMoadal}>{Strings.ok}</Text>
+                <Text style={styles.txtBtnMoadal}>{strings.ok}</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-        <Text style={styles.txtTitle}>{Strings.teams}</Text>
+        <Text style={styles.txtTitle}>{strings.teams}</Text>
         <View style={styles.viewTop}>
-          <View>
+          <View style={{paddingStart: 16}}>
             <FlatList
               data={teams}
               keyExtractor={item => item.id}
@@ -148,7 +157,7 @@ export const SelectTeams = ({navigation}) => {
           </View>
           {teamsCount <= 2 && (
             <TouchableOpacity onPress={addTeamClock}>
-              <Text style={styles.txtAdd}>{Strings.addTeam}</Text>
+              <Text style={styles.txtAdd}>{strings.addTeam}</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -159,7 +168,7 @@ export const SelectTeams = ({navigation}) => {
               <Text
                 style={
                   styles.txtSettings
-                }>{`${Strings.roundTime}\n${time} ${Strings.sec}`}</Text>
+                }>{`${strings.roundTime}\n${time} ${strings.sec}`}</Text>
             </View>
             <BtnCircle flag="+" click={addTimeClick} />
           </View>
@@ -169,11 +178,12 @@ export const SelectTeams = ({navigation}) => {
               <Text
                 style={
                   styles.txtSettings
-                }>{`${Strings.victoryPoints}\n${fixPoint}`}</Text>
+                }>{`${strings.victoryPoints}\n${fixPoint}`}</Text>
             </View>
             <BtnCircle flag="+" click={addFixPointClick} />
           </View>
           <BtnPlay
+            title={strings.play}
             click={() => {
               navigation.navigate('DeAsaGame');
             }}

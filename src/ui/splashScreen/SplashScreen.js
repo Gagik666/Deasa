@@ -6,18 +6,19 @@ import {onValue, ref} from 'firebase/database';
 import {db} from '../../../db/firebase/config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
-import { Strings } from '../../../assets/strings/Strings';
-import { useDispatch } from 'react-redux';
-import { editAppUrl, editAuthorEmail } from '../../../redux/reducers/raeducer';
+import {Strings} from '../../../assets/strings/Strings';
+import {useDispatch} from 'react-redux';
+import {editAppUrl, editAuthorEmail} from '../../../redux/reducers/raeducer';
+import {strings} from '../../../localization';
+import {changeLanguage, editLanguage} from '../../../redux/reducers/settings';
+import {Image} from 'react-native';
 export const SplashScreen = ({navigation}) => {
-
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch();
   const [isConnected, setIsConnected] = useState(true);
   useEffect(() => {
-
-    getAppUrl()
-    getAuthorEmail()
-
+    getAppUrl();
+    getAuthorEmail();
+    selecrLanguage();
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
 
@@ -31,15 +32,36 @@ export const SplashScreen = ({navigation}) => {
 
   const getAppUrl = () => {
     onValue(ref(db, '/app_url/'), r => {
-       dispatch(editAppUrl(r.val()))
+      dispatch(editAppUrl(r.val()));
     });
-  }
+  };
 
   const getAuthorEmail = () => {
     onValue(ref(db, '/author_email/'), r => {
-       dispatch(editAuthorEmail(r.val()))
+      dispatch(editAuthorEmail(r.val()));
     });
-  }
+  };
+  const selecrLanguage = () => {
+    try {
+      AsyncStorage.getItem('lang').then(value => {
+        if (value === null) {
+          AsyncStorage.setItem('lang', 'en');
+        } else {
+          dispatch(changeLanguage(value));
+          strings.setLanguage(value);
+        }
+      });
+      AsyncStorage.getItem('langId').then(id => {
+        if (id === null) {
+          AsyncStorage.setItem('langId', ' ' + 0);
+        } else {
+          dispatch(editLanguage(id));
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const checkVersion = async () => {
     try {
@@ -80,17 +102,18 @@ export const SplashScreen = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.wrapper}>
-      <StatusBar 
-        barStyle='light-content'
-        backgroundColor='#FF4359'
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#FF4359"
         translucent
       />
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
-        <View>
-          <Text style={styles.txtTitle}>{Strings.projectName}</Text>
-        </View>
+        <Image
+          source={require('../../../assets/images/logoDeasa_512-512.png')}
+          style={styles.img}
+        />
       </LinearGradient>
     </SafeAreaView>
   );

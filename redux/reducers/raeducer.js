@@ -1,34 +1,34 @@
-import {Strings} from '../../assets/strings/Strings';
+import {strings} from '../../localization';
 // This is the initial data for the Redux project
 const initialState = {
   teams: [
     {
-      teamName: `${Strings.team} 1`,
+      teamName: 'Team 1',
       TeamPoint: 0,
       playerCount: 2,
       players: [
         {
-          name: `${Strings.player} 1`,
+          name: 'Player 1',
           id: 1,
         },
         {
-          name: `${Strings.player} 2`,
+          name: 'Player 2',
           id: 2,
         },
       ],
       id: 1,
     },
     {
-      teamName: `${Strings.team} 2`,
+      teamName: 'Team 2',
       TeamPoint: 0,
       playerCount: 2,
       players: [
         {
-          name: `${Strings.player} 1`,
+          name: 'Player 1',
           id: 1,
         },
         {
-          name: `${Strings.player} 2`,
+          name: 'Player 2',
           id: 2,
         },
       ],
@@ -63,20 +63,21 @@ export const reducer = (state = initialState, action) => {
         ...state,
         teams: [...state.teams, {name: action.name, id: action.id}],
       };
+
     case 'addTeam':
       return {
         ...state,
         teams: [
           ...state.teams,
           {
-            teamName: `${Strings.team} 3`,
+            teamName: 'Team 3',
             players: [
               {
-                name: `${Strings.player} 1`,
+                name: 'Player 1',
                 id: 1,
               },
               {
-                name: `${Strings.player} 2`,
+                name: 'Player 2',
                 id: 2,
               },
             ],
@@ -111,7 +112,7 @@ export const reducer = (state = initialState, action) => {
                 players: [
                   ...obj.players,
                   {
-                    name: 'player 3',
+                    name: 'Player 3',
                     id: obj.players.length
                       ? obj.players[obj.players.length - 1].id + 1
                       : 1,
@@ -276,7 +277,7 @@ export const reducer = (state = initialState, action) => {
     case 'editAuthorEmail':
       return {
         ...state,
-        authorEmail: action.email
+        authorEmail: action.email,
       };
     default:
       return state;
@@ -393,8 +394,7 @@ export const addTempPoint = () => {
   return dispatch => {
     return dispatch({type: 'addTempPoint'});
   };
-}; 
-
+};
 
 //  This function is designed to reduce the team's temporary game points by one point
 export const reduceTempPoint = () => {
@@ -438,7 +438,6 @@ export const reduceFixPoint = () => {
   };
 };
 
-
 // This function is designed to change the game time using a slider
 export const editFixPoint = value => {
   return dispatch => {
@@ -446,7 +445,7 @@ export const editFixPoint = value => {
   };
 };
 
-  // This function is designed to increase the team's points
+// This function is designed to increase the team's points
 export const addPoint = (id, point) => {
   return dispatch => {
     return dispatch({type: 'addPoint', id, point});

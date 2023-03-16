@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {addPoint, addTempPoint, reducePoint, reduceTempPoint} from '../../../redux/reducers/raeducer';
+import { addTempPoint, reduceTempPoint} from '../../../redux/reducers/raeducer';
 import {styles} from './Style';
 
 export const BtnSingers = ({name}) => {

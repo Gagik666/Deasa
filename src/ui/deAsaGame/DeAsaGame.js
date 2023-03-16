@@ -13,7 +13,7 @@ import {
   resetQueueOfPlayers,
   resetQueueOfTeams,
 } from '../../../redux/reducers/raeducer';
-import {Strings} from '../../../assets/strings/Strings';
+import { strings } from '../../../localization';
 
 export const DeAsaGame = ({navigation}) => {
   const dispatch = useDispatch();
@@ -107,7 +107,7 @@ export const DeAsaGame = ({navigation}) => {
             renderItem={({item}) => <BtnSingers name={item.name} />}
           />
         </View>
-        <Text style={styles.txtPoints}>{`${Strings.point} ${tempPoint}`}</Text>
+        <Text style={styles.txtPoints}>{`${strings.point} ${tempPoint}`}</Text>
       </LinearGradient>
     </SafeAreaView>
   );

@@ -7,10 +7,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   addPlayer,
   deleteTeam,
-  editTeamName,
 } from '../../../redux/reducers/raeducer';
-import Modal from 'react-native-modal';
-import { Strings } from '../../../assets/strings/Strings';
+import { strings } from '../../../localization';
 
 export const Team = ({team, open, setidItem, setidItemPlayer, setClickStatus}) => {
   const teamsCount = useSelector(s => s.deAsa.teamsCount);
@@ -58,7 +56,7 @@ export const Team = ({team, open, setidItem, setidItemPlayer, setClickStatus}) =
 
       {team.playerCount <= 2 && (
         <TouchableOpacity style={styles.btnAdd} onPress={addPlayerClick}>
-          <Text style={styles.txtAdd}>{Strings.addPlayer}</Text>
+          <Text style={styles.txtAdd}>{strings.addPlayer}</Text>
         </TouchableOpacity>
       )}
     </View>

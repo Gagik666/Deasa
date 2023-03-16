@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions} from 'react-native';
 import {COLOR} from '../../../assets/colors/Colors';
 
 export const styles = StyleSheet.create({
@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
   LinearGradient: {
     flex: 1,
     padding: 20,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   txtTitle: {
     textAlign: 'center',
@@ -17,5 +18,14 @@ export const styles = StyleSheet.create({
     marginTop: '60%',
     fontFamily: 'Asset-Regular'
   },
-  
+  viewImg: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%' 
+  },
+  img: {
+    width: Dimensions.get('window').width * .9,
+    height: Dimensions.get('window').width * .9,
+    resizeMode: "contain"
+  }
 });

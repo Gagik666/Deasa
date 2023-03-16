@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import {StyleSheet} from 'react-native';
 import {COLOR} from '../../../assets/colors/Colors';
 
@@ -24,5 +25,14 @@ export const styles = StyleSheet.create({
     marginTop: '60%',
     fontFamily: 'Asset-Regular'
   },
-  
+  viewImg: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%'  
+  },
+  img: {
+    width: Dimensions.get('window').width * .9,
+    height: Dimensions.get('window').width * .9,
+    resizeMode: "contain"
+  }
 });

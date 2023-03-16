@@ -1,6 +1,6 @@
 import {
   View,
-  Text,
+  Image,
   SafeAreaView,
   TouchableOpacity,
   StatusBar,
@@ -19,9 +19,9 @@ import {
   resetQueueOfTeams,
   resetTempPoint,
 } from '../../../redux/reducers/raeducer';
-import {Strings} from '../../../assets/strings/Strings';
 import {ShereSVGIcone} from '../../../assets/icones/ShereSVGIcone';
 import Share from 'react-native-share';
+import {strings} from '../../../localization';
 const HomeScreen = ({navigation}) => {
   const teams = useSelector(s => s.deAsa.teams);
   const appUrl = useSelector(s => s.deAsa.appUrl);
@@ -40,7 +40,7 @@ const HomeScreen = ({navigation}) => {
 
   const share = () => {
     const options = {
-      message: Strings.shareMessage,
+      message: strings.shareMessage,
       url: appUrl,
     };
 
@@ -63,11 +63,10 @@ const HomeScreen = ({navigation}) => {
       <LinearGradient
         colors={['#FF4359', '#AA1439', '#68192F', '#53192A', '#000000']}
         style={styles.LinearGradient}>
-        <View>
           <View style={styles.viewTop}>
             <TouchableOpacity
               onPress={() => {
-                share()
+                share();
               }}>
               <ShereSVGIcone />
             </TouchableOpacity>
@@ -78,9 +77,13 @@ const HomeScreen = ({navigation}) => {
               <SettingsSVGIcone />
             </TouchableOpacity>
           </View>
-          <Text style={styles.txtTitle}>{Strings.projectName}</Text>
-        </View>
-        <BtnPlay click={play} />
+          <View style={styles.viewImg}>
+            <Image
+              source={require('../../../assets/images/logoDeasa_512-512.png')}
+              style={styles.img}
+            />
+          </View>
+        <BtnPlay click={play} title="PLAY" />
       </LinearGradient>
     </SafeAreaView>
   );
