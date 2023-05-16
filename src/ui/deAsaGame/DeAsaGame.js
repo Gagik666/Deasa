@@ -1,9 +1,10 @@
-import {Text, SafeAreaView, View, FlatList, StatusBar} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { Text, SafeAreaView, View, FlatList, StatusBar } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
-import {styles} from './Style';
-import {BtnSingers} from '../../components/btnSingers/BtnSingers';
+import { styles } from './Style';
+import { BtnSingers } from '../../components/btnSingers/BtnSingers';
+import Sound from 'react-native-sound';
 import {
   addPoint,
   editIndex,
@@ -15,7 +16,7 @@ import {
 } from '../../../redux/reducers/raeducer';
 import { strings } from '../../../localization';
 
-export const DeAsaGame = ({navigation}) => {
+export const DeAsaGame = ({ navigation }) => {
   const dispatch = useDispatch();
   const singers = useSelector(s => s.deAsa.singers);
   const teams = useSelector(s => s.deAsa.teams);
@@ -30,6 +31,7 @@ export const DeAsaGame = ({navigation}) => {
   const timer = useSelector(s => s.deAsa.timer);
   const fixPoint = useSelector(s => s.deAsa.fixPoint);
   const teamsCount = useSelector(s => s.deAsa.teamsCount);
+  const soundStatus = useSelector(s => s.settings.sound);
 
   useEffect(() => {
     startTimer();
@@ -44,11 +46,10 @@ export const DeAsaGame = ({navigation}) => {
       stopTimer();
       dispatch(editTempIndex());
       for (let i = 0; i < teams.length; i++) {
-        if (teams[i].TeamPoint >= fixPoint) {
-          navigation.navigate('Finish', {team: teams[i].teamName});
-          break;
+        if (teams[i].TeamPoint >= fixPoint && queueOfPlayers === teams[queueOfTeams].playerCount) {
+          navigation.replace('Finish', { team: teams[i].teamName });
         } else {
-          navigation.navigate('Points');
+          navigation.replace('Points');
         }
       }
 
@@ -85,6 +86,21 @@ export const DeAsaGame = ({navigation}) => {
     setTimerId(null);
   };
 
+
+  const sound = new Sound(require('../../../assets/sounds/sound.wav'), null, (error) => {
+    if (error) {
+      console.log('failed to load the sound', error);
+      return;
+    }
+    // loaded successfully
+    console.log('duration in seconds: ' + sound.getDuration() +
+      'number of channels: ' + sound.getNumberOfChannels());
+  });
+
+  const clickSound = () => {
+    soundStatus ? sound.play() : null
+  }
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <StatusBar
@@ -104,7 +120,7 @@ export const DeAsaGame = ({navigation}) => {
             style={styles.flatList}
             keyExtractor={item => item.id}
             data={singers.slice(index, index + 6)}
-            renderItem={({item}) => <BtnSingers name={item.name} />}
+            renderItem={({ item }) => <BtnSingers name={item.name} onClick={clickSound} />}
           />
         </View>
         <Text style={styles.txtPoints}>{`${strings.point} ${tempPoint}`}</Text>

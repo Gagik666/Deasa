@@ -1,10 +1,11 @@
 const initialState = {
   language: [
-    {title: 'en', id: 0, active: true},
-    {title: 'ru', id: 1, active: false},
-    {title: 'arm', id: 2, active: false},
+    { title: 'en', id: 0, active: true },
+    { title: 'ru', id: 1, active: false },
+    { title: 'arm', id: 2, active: false },
   ],
   lang: 'en',
+  sound: false
 };
 
 export const settingsReducer = (state = initialState, action) => {
@@ -15,13 +16,13 @@ export const settingsReducer = (state = initialState, action) => {
         language: state.language.map(el =>
           el.id === action.id
             ? {
-                ...el,
-                active: true,
-              }
+              ...el,
+              active: true,
+            }
             : {
-                ...el,
-                active: false,
-              },
+              ...el,
+              active: false,
+            },
         ),
       };
     case 'changeLanguage':
@@ -29,6 +30,11 @@ export const settingsReducer = (state = initialState, action) => {
         ...state,
         lang: action.val,
       };
+    case 'changeSoundStatus':
+      return {
+        ...state,
+        sound: action.val
+      }
     default:
       return state;
   }
@@ -36,12 +42,18 @@ export const settingsReducer = (state = initialState, action) => {
 
 export const editLanguage = id => {
   return dispatch => {
-    return dispatch({type: 'editLanguage', id});
+    return dispatch({ type: 'editLanguage', id });
   };
 };
 
 export const changeLanguage = val => {
   return dispatch => {
-    return dispatch({type: 'changeLanguage', val});
+    return dispatch({ type: 'changeLanguage', val });
   };
 };
+
+export const changeSoundStatus = val => dispatch => dispatch({ type: "changeSoundStatus", val })
+
+
+
+

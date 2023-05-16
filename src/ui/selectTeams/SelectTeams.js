@@ -119,7 +119,7 @@ export const SelectTeams = ({navigation}) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  if (name === '') {
+                  if (name.trim() === '') {
                     setIsVisible(false);
                     
                   } else {
@@ -185,7 +185,7 @@ export const SelectTeams = ({navigation}) => {
           <BtnPlay
             title={strings.play}
             click={() => {
-              navigation.navigate('DeAsaGame');
+              navigation.replace('DeAsaGame');
             }}
           />
         </View>

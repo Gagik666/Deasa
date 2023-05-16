@@ -18,11 +18,14 @@ import {PointsSVGIcone} from '../../../assets/icones/PointsSVGIcone';
 import {FeedbackSVGIcone} from '../../../assets/icones/FeedbackSVGIcone';
 import Share from 'react-native-share';
 import Modal from 'react-native-modal';
-import {changeLanguage, editLanguage} from '../../../redux/reducers/settings';
+import {changeLanguage, changeSoundStatus, editLanguage} from '../../../redux/reducers/settings';
 import { LanguageSVGIcone } from '../../../assets/icones/LanguageSVGIcone';
 import { strings } from '../../../localization';
 import { LanguageButton } from '../../components/languageButton/LanguageButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SongSVGIcone } from '../../../assets/icones/SongSVGIcone';
+import { Switch } from 'react-native';
+import { COLOR } from '../../../assets/colors/Colors';
 
 export const Settings = ({navigation}) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,6 +33,7 @@ export const Settings = ({navigation}) => {
   const fixPoint = useSelector(s => s.deAsa.fixPoint);
   const authorEmail = useSelector(s => s.deAsa.authorEmail);
   const language = useSelector(s => s.settings.language);
+  const sound = useSelector(s => s.settings.sound);
   const lang = useSelector(s => s.settings.lang)
   const dispatch = useDispatch();
   const setTime = val => {
@@ -150,6 +154,21 @@ export const Settings = ({navigation}) => {
             <Text style={styles.txtTimeSubTitle}>{strings.ReportProblems}</Text>
           </View>
         </TouchableOpacity>
+        <View style={styles.viewTime}>
+          <SongSVGIcone />
+          <View>
+            <Text style={styles.txtTimeTitle}>{strings.soundInGame}</Text>
+            <Text style={[styles.txtTimeSubTitle, {width: "100%"}]}>{strings.soundEffects}</Text>
+          </View>
+          <View >
+            <Switch 
+              trackColor={{false: COLOR.black, true: COLOR.white}}
+              thumbColor={sound ? COLOR.yellow : COLOR.white}
+              onValueChange={() => {dispatch(changeSoundStatus(!sound))}}
+              value = {sound}
+            />
+          </View>
+        </View>
       </LinearGradient>
     </SafeAreaView>
   );

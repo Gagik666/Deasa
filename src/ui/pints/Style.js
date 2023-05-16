@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   
 
   txtPoint: {
-    fontSize: 42,
+    fontSize:26,
     color: COLOR.white,
     fontWeight: '700',
   },

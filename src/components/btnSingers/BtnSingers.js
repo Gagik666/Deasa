@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { addTempPoint, reduceTempPoint} from '../../../redux/reducers/raeducer';
 import {styles} from './Style';
 
-export const BtnSingers = ({name}) => {
+export const BtnSingers = ({name, onClick}) => {
   const [click, setClick] = useState(true);
   const queueOfTeams = useSelector(s => s.deAsa.queueOfTeams);
   const dispatch = useDispatch();
@@ -22,13 +22,13 @@ export const BtnSingers = ({name}) => {
   };
 
   const add = (
-    <TouchableOpacity style={styles.btnActiveItem} onPress={addPointClick}>
+    <TouchableOpacity style={styles.btnActiveItem} onPress={() => {addPointClick(), onClick()}}>
       <Text style={styles.txtActiveItem}>{name}</Text>
     </TouchableOpacity>
   );
 
   const reducer = (
-    <TouchableOpacity style={styles.btnInActiveItem} onPress={reducePointClick}>
+    <TouchableOpacity style={styles.btnInActiveItem} onPress={() => {reducePointClick(), onClick()}}>
       <Text style={styles.txtInActiveItem}>{name}</Text>
     </TouchableOpacity>
   );

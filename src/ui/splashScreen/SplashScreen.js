@@ -76,7 +76,7 @@ export const SplashScreen = ({navigation}) => {
               if (val !== r.val()) {
                 loadingSingers();
               } else {
-                navigation.navigate('Home');
+                navigation.replace('Home');
               }
             });
           });
@@ -90,7 +90,7 @@ export const SplashScreen = ({navigation}) => {
       onValue(ref(db, '/Singers/'), r => {
         let s = JSON.stringify(r.val());
         AsyncStorage.setItem('singers', s).then(() => {
-          navigation.navigate('Home');
+          navigation.replace('Home');
         });
       });
       onValue(ref(db, '/version_singers/'), r => {
